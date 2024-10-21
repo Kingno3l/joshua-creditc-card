@@ -24,25 +24,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CreditCardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    ) {
-//
-//                    }
-                    DisplayCards()
+                CreditCardTheme {
+                    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                        DisplayCards(modifier = Modifier.padding(innerPadding))
+                    }
                 }
+
             }
         }
     }
 }
 
 @Composable
-fun DisplayCards(){
+fun DisplayCards(modifier: Modifier = Modifier) {
     val cards = listOf(
         CardInfo("2211 1122 4343 3434",
-            "Joshua AY",
+            "Generation AY",
             R.drawable.mastercard,
             R.drawable.background1
         ),
@@ -54,7 +51,7 @@ fun DisplayCards(){
         ),
 
         CardInfo("2211 1122 4343 3434",
-            "Joshua AY",
+            "AY Generatino",
             R.drawable.mastercard,
             R.drawable.background4
         ),
