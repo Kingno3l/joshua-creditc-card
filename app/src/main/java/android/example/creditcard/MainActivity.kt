@@ -12,6 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import android.example.creditcard.ui.theme.CreditCardTheme
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,14 +25,58 @@ class MainActivity : ComponentActivity() {
         setContent {
             CreditCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    ) {
+//
+//                    }
+                    DisplayCards()
                 }
             }
         }
     }
+}
+
+@Composable
+fun DisplayCards(){
+    val cards = listOf(
+        CardInfo("2211 1122 4343 3434",
+            "Joshua AY",
+            R.drawable.mastercard,
+            R.drawable.background1
+        ),
+
+        CardInfo("2211 1122 4343 3434",
+            "Joshua AY",
+            R.drawable.visa,
+            R.drawable.background3
+        ),
+
+        CardInfo("2211 1122 4343 3434",
+            "Joshua AY",
+            R.drawable.mastercard,
+            R.drawable.background4
+        ),
+
+        CardInfo("2211 1122 4343 3434",
+            "Joshua AY",
+            R.drawable.visa,
+            R.drawable.background2
+        ),
+    )
+
+    LazyColumn(modifier = Modifier
+        .fillMaxHeight()
+        .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+
+        items(cards){
+                card -> CreditCard(cardInfo = card)
+        }
+    }
+
 }
 
 
@@ -42,8 +91,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun DisplayCardsPreview() {
     CreditCardTheme {
-        Greeting("Android")
+        DisplayCards()
     }
 }
