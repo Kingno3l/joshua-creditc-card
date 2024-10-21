@@ -30,6 +30,8 @@ fun CreditCard(cardInfo: CardInfo){
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
+
+        Box() {
         Image(
             painter = painterResource(id = cardInfo.backgroundImage),
             contentDescription = "VISA",
@@ -37,7 +39,7 @@ fun CreditCard(cardInfo: CardInfo){
             contentScale = ContentScale.FillBounds
         )
 
-        Box(modifier = Modifier.padding(16.dp)){
+        Box(modifier = Modifier.padding(16.dp).fillMaxSize()){
             Image(
                 painter = painterResource(id = cardInfo.providerImage),
                 contentDescription = "Provider Image",
@@ -57,7 +59,7 @@ fun CreditCard(cardInfo: CardInfo){
                 )
             }
         }
-
+        }
 
     }
 }
